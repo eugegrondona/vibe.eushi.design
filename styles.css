@@ -168,6 +168,17 @@ body {
     color: #131313;
 }
 
+/* Large Desktop */
+@media (min-width: 1740px) {
+    .container {
+        padding: 0 224px;
+    }
+
+    .byline {
+        left: 224px;
+    }
+}
+
 /* Tablet */
 @media (max-width: 1240px) {
     html, body {
