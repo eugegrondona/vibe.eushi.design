@@ -38,7 +38,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: auto;
-    margin-bottom: 200px;
+    margin-bottom: 132px;
 }
 
 .intro {
@@ -155,7 +155,7 @@ body {
     font-size: 14px;
     color: #AAAAAA;
     position: absolute;
-    bottom: 132px;
+    bottom: 64px;
     left: 72px;
 }
 
