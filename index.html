@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vibe.eushi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <aside class="left-column">
+            <div class="intro">
+                <p class="welcome">Welcome to</p>
+                <h1 class="title">vibe.eushi</h1>
+            </div>
+            <p class="description">This is a place where all my vibe coding explorations and products live. One random project at a time.</p>
+        </aside>
+
+        <section class="right-column">
+            <div class="projects">
+                <a href="#" class="project-card">
+                    <img src="assets/life-in-pixels.png" alt="Life in Pixels" class="project-image">
+                </a>
+                <a href="#" class="project-card">
+                    <img src="assets/friends-financing.png" alt="Friends Financing" class="project-image">
+                </a>
+            </div>
+        </section>
+
+        <p class="byline">by <a href="https://eushi.design/" class="byline-link">eushi.design</a></p>
+    </main>
+
+    <script>
+        const rightColumn = document.querySelector('.right-column');
+        const isTabletOrMobile = () => window.innerWidth <= 1340;
+
+        document.addEventListener('wheel', (e) => {
+            if (isTabletOrMobile()) return;
+            e.preventDefault();
+            rightColumn.scrollTop += e.deltaY;
+        }, { passive: false });
+    </script>
+</body>
+</html>
