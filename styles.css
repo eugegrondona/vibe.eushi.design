@@ -73,9 +73,9 @@ body {
 }
 
 .right-column {
-    flex-shrink: 0;
+    flex-shrink: 1;
     overflow-y: auto;
-    width: 520px;
+    width: clamp(400px, 35vw, 520px);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -111,8 +111,9 @@ body {
 }
 
 .project-image {
-    width: 520px;
-    height: 273px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 520 / 273;
     background-color: #f0f0f0;
     border-radius: 2px;
     object-fit: cover;
@@ -122,6 +123,30 @@ body {
 
 .project-card:hover .project-image {
     transform: scale(1.02);
+}
+
+.coming-soon-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(19, 19, 19, 0.6);
+    color: #FBFBFB;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 2px;
+}
+
+.project-card--coming-soon:hover .coming-soon-label {
+    opacity: 1;
+}
+
+.project-card--coming-soon:hover .project-image {
+    transform: scale(1);
 }
 
 .byline {
@@ -144,7 +169,7 @@ body {
 }
 
 /* Tablet */
-@media (max-width: 1340px) {
+@media (max-width: 1240px) {
     html, body {
         height: auto;
         overflow: auto;

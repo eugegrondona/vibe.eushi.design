@@ -27,6 +27,10 @@
                 <a href="#" class="project-card">
                     <img src="assets/friends-financing.png" alt="Friends Financing" class="project-image">
                 </a>
+                <div class="project-card project-card--coming-soon">
+                    <img src="assets/world-cup.png" alt="World Cup" class="project-image">
+                    <span class="coming-soon-label">Coming soon</span>
+                </div>
             </div>
         </section>
 
@@ -35,7 +39,7 @@
 
     <script>
         const rightColumn = document.querySelector('.right-column');
-        const isTabletOrMobile = () => window.innerWidth <= 1340;
+        const isTabletOrMobile = () => window.innerWidth <= 1240;
 
         document.addEventListener('wheel', (e) => {
             if (isTabletOrMobile()) return;
