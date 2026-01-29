@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends Financing - Group Expense Calculator</title>
+    <link rel="icon" type="image/png" href="assets/Favicon.png">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Friends Financing - Group Expense Calculator">
+    <meta property="og:description" content="Clear accounts keep friendships alive. Split expenses easily with your friends.">
+    <meta property="og:image" content="assets/social-sharing.png">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Friends Financing - Group Expense Calculator">
+    <meta name="twitter:description" content="Clear accounts keep friendships alive. Split expenses easily with your friends.">
+    <meta name="twitter:image" content="assets/social-sharing.png">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Landing Screen -->
+    <div id="landing-screen" class="screen landing-screen">
+        <div class="container">
+            <header>
+                <h1>Friends Financing</h1>
+                <p class="subtitle">Clear accounts keep friendships alive</p>
+            </header>
+
+            <main>
+                <section class="card">
+                    <div class="card-content">
+                        <!-- Existing Groups (hidden if none) -->
+                        <div id="existing-groups-section" class="hidden">
+                            <h2>Use an existing group of friends</h2>
+                            <ul id="landing-groups-list" class="landing-groups-list"></ul>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <!-- Create New Group (shown if no existing groups) -->
+                        <div id="new-group-section">
+                            <h2 id="new-group-title">Add a new group of friends...</h2>
+                            <div class="form-group">
+                                <label for="new-group-name">Group Name</label>
+                                <div class="input-group">
+                                    <input type="text" id="new-group-name" placeholder="e.g., Roommates" maxlength="22">
+                                    <button type="button" id="create-group-btn" class="btn btn-primary">Create Group</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <div class="site-credit">CREATED BY <a href="https://eushi.design/" target="_blank" rel="noopener">EUSHI.DESIGN</a></div>
+        </div>
+    </div>
+
+    <!-- Expense Screen -->
+    <div id="expense-screen" class="screen hidden">
+        <div class="container">
+            <header>
+                <button type="button" id="back-btn" class="back-btn">&larr; Groups</button>
+                <h1 id="app-title"><span id="group-title">Friends</span> Financing</h1>
+                <p class="subtitle">Clear accounts keep friendships alive</p>
+            </header>
+
+            <main>
+                <!-- Members Section -->
+                <section class="card" id="members-section">
+                    <div class="card-content">
+                        <h2>Group Members <span id="member-count" class="member-count"></span></h2>
+                        <div class="input-group">
+                            <input type="text" id="member-name" placeholder="Enter member name" maxlength="50">
+                            <button type="button" id="add-member-btn" class="btn btn-primary">Add Member</button>
+                        </div>
+                        <ul id="members-list" class="members-list"></ul>
+                        <p class="hint" id="members-hint">Add at least 2 members to get started</p>
+                    </div>
+                </section>
+
+                <!-- Expenses Section -->
+                <section class="card" id="expenses-section">
+                    <div class="card-content">
+                        <h2>Expenses</h2>
+                        <form id="expense-form">
+                            <div class="form-group">
+                                <label for="expense-description">Description</label>
+                                <input type="text" id="expense-description" placeholder="e.g., Dinner at restaurant" required maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="expense-amount">Amount ($)</label>
+                                <input type="number" id="expense-amount" placeholder="0.00" step="0.01" min="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="expense-payer">Who Paid?</label>
+                                <select id="expense-payer" required>
+                                    <option value="">Select payer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Who Benefited?</label>
+                                <div class="checkbox-group" id="expense-participants">
+                                    <p class="hint">Add members first</p>
+                                </div>
+                                <label class="select-all-label">
+                                    <input type="checkbox" id="select-all-participants" checked>
+                                    Select All
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Add Expense</button>
+                        </form>
+
+                        <div class="expenses-summary">
+                            <h3>Recorded Expenses</h3>
+                            <ul id="expenses-list" class="expenses-list"></ul>
+                            <p id="no-expenses-msg" class="hint">No expenses recorded yet</p>
+                            <div class="total-row" id="total-row">
+                                <span>Total:</span>
+                                <span id="total-amount">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="card" id="results-section">
+                    <div class="card-content">
+                        <h2>Settlement</h2>
+                        <p id="settlements-hint" class="hint">Resetting the money karma, one balance at a time</p>
+
+                        <div id="results-container" class="results-container hidden">
+                            <h3>Balances</h3>
+                            <ul id="balances-list" class="balances-list"></ul>
+
+                            <h3>Payments to Settle</h3>
+                            <ul id="settlements-list" class="settlements-list"></ul>
+                            <p id="all-settled-msg" class="success-msg hidden">Everyone is settled up!</p>
+
+                            <button type="button" id="share-btn" class="btn btn-primary btn-full">Share</button>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer>
+                <button type="button" id="reset-btn" class="btn btn-secondary">Reset Expenses</button>
+                <button type="button" id="new-group-btn" class="btn btn-primary">New Group</button>
+            </footer>
+            <div class="site-credit">CREATED BY <a href="https://eushi.design/" target="_blank" rel="noopener">EUSHI.DESIGN</a></div>
+        </div>
+    </div>
+
+    <script src="share-image.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
