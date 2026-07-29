@@ -125,30 +125,6 @@ body {
     transform: scale(1.02);
 }
 
-.coming-soon-label {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(19, 19, 19, 0.6);
-    color: #FBFBFB;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 2px;
-}
-
-.project-card--coming-soon:hover .coming-soon-label {
-    opacity: 1;
-}
-
-.project-card--coming-soon:hover .project-image {
-    transform: scale(1);
-}
-
 .byline {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-weight: 400;
