@@ -75,14 +75,10 @@ body {
 .right-column {
     flex-shrink: 1;
     overflow-y: auto;
-    width: clamp(400px, 35vw, 520px);
+    width: clamp(480px, 42vw, 640px);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-}
-
-.right-column:has(.projects .project-card:nth-child(3)) {
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .projects {
